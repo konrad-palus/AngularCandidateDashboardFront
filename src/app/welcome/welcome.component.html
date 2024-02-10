@@ -2,9 +2,9 @@
 <section class="background">
 <div class="welcomeWrap">
     <div class="Options">
-        <button class="sign" (click)="showForm('sign')">Loguj</button>
-        <button class="register" (click)="showForm('register')">Rejestruj</button>
-        <button class="forgotPassword" (click)="showForm('forgot')">Przypomnij hasło</button>
+        <button class="sign" (click)="showForm('sign')">Sign in</button>
+        <button class="register" (click)="showForm('register')">Register</button>
+        <button class="forgotPassword" (click)="showForm('forgot')">Forgot password</button>
       </div>
       <div class="formPage">
         <app-sign-in *ngIf="currentForm === 'sign'"></app-sign-in>
