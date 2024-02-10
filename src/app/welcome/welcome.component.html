@@ -2,10 +2,14 @@
 <section class="background">
 <div class="welcomeWrap">
     <div class="Options">
-        <button class="sign">loguj</button>
-        <button class="register">rejestruj</button>
-        <button class="forgotPassword">przypomnij hasło</button>
-    </div>
-    <div class="formPage"></div>
+        <button class="sign" (click)="showForm('sign')">Loguj</button>
+        <button class="register" (click)="showForm('register')">Rejestruj</button>
+        <button class="forgotPassword" (click)="showForm('forgot')">Przypomnij hasło</button>
+      </div>
+      <div class="formPage">
+        <app-sign-in *ngIf="currentForm === 'sign'"></app-sign-in>
+        <app-register *ngIf="currentForm === 'register'"></app-register>
+        <app-forgot-password *ngIf="currentForm === 'forgot'"></app-forgot-password>
+      </div>
 </div>
 </section>
