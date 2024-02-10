@@ -1,1 +1,6 @@
-<p>sign-in works!</p>
+
+<form (ngSubmit)="signIn()">
+    <input class = "inputField" type="text" [(ngModel)]="model.login" name="login" placeholder="Login" required>
+    <input class = "inputField" type="password" [(ngModel)]="model.password" name="password" placeholder="Password" required>
+    <button type="submit" class = "buttonField">Sign in</button>
+</form>

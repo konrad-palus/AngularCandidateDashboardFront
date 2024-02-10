@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 5%;
+    align-items: center;
+    gap: 1.5rem;    
+  }
+  
+.inputField, .buttonField 
+{
+  text-align: center;
+  border-radius: 5rem;
+  height: 2rem;
+  width: 22rem;
+  box-shadow: .1rem .1rem .2rem .1rem rgb(255, 255, 255); 
+  border: none;
+  background: black;
+  color: white
+}
+
+.buttonField:hover 
+{
+  height: 2.6rem;
+  width: 18rem;
+  transition: 1s ease;
+  background-image: linear-gradient(rgb(61, 23, 83), rgb(85, 6, 109), rgb(61, 23, 83));
+}
