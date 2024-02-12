@@ -14,11 +14,11 @@ export class AccountService {
 
   constructor(private http: HttpClient) {}
 
-  registerUser(registrationData: RegisterModel): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/Account/Register`, registrationData);
+  registerUser(registrationData: RegisterModel): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(`${this.apiUrl}/Account/Register`, registrationData);
   }
 
-  loginUser(loginData: LoginModel): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/Account/Login`, loginData);
+  loginUser(loginData: LoginModel): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/Account/Login`, loginData);
   }
 }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AccountService } from '../services/user-managment-service.service';
 import { LoginModel } from '../models/login.model';
 
 @Component({
@@ -7,17 +9,33 @@ import { LoginModel } from '../models/login.model';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
+  styleUrls: ['./sign-in.component.css'] 
 })
-export class SignInComponent {
-model: LoginModel = 
-{
-  login: '',
-  password: ''
-};
+export class SignInComponent implements OnInit {
+  model: LoginModel = {
+    login: '',
+    password: ''
+  };
+  errorMessage: string = '';
 
-constructor() {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
-signIn() {}
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['']);
+    }
+  }
 
+  signIn() {
+    this.accountService.loginUser(this.model).subscribe({
+      next: (response) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['']); 
+      },
+      error: (err) => {
+        console.error(err);
+        this.errorMessage = 'login failed ' + err;
+      }
+    });
+  }
 }
