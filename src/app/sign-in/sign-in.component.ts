@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['']);
+      this.router.navigate(['user-profile']);
     }
   }
 
@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
     this.accountService.loginUser(this.model).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['']); 
+        this.router.navigate(['user-profile']); 
       },
       error: (err) => {
         console.error(err);
