@@ -1,0 +1,30 @@
+.custom-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%; 
+    background-color: black;
+    border-bottom: 2px solid white;
+  }
+  
+
+  
+  .center-button {
+    flex: 0 1 2%; 
+    text-align: center;
+    height: 40%;
+  }
+  
+.center-button {
+    width: 100%; 
+    border-radius: 1rem;
+  }
+  
+.center 
+{
+    height: 60%;
+    flex: 0 1 10%;
+    height: 60%;
+}
+
+

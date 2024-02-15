@@ -9,7 +9,7 @@ import { LoginModel } from '../models/login.model';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'] 
+  styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
   model: LoginModel = {
@@ -21,21 +21,23 @@ export class SignInComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('token')) {
-      this.router.navigate(['user-profile']);
-    }
+    this.accountService.getIsLoggedIn().subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['main-component']); 
+      }
+    });
   }
 
   signIn() {
     this.accountService.loginUser(this.model).subscribe({
-      next: (response) => {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['user-profile']); 
+      next: () => {
+        this.router.navigate(['main-component']); 
       },
       error: (err) => {
         console.error(err);
-        this.errorMessage = 'login failed ' + err;
+        this.errorMessage = 'Login failed: ' + err.message;
       }
     });
   }
+
 }

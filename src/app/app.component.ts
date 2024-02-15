@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { RegisterComponent } from "./register/register.component";
+import { Observable } from 'rxjs';
+import { AccountService } from './services/user-managment-service.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, RegisterComponent]
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, NavbarComponent], 
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'AngularCandidateDashboardFront';
+export class AppComponent implements OnInit {
+  isLoggedIn$!: Observable<boolean>;
+
+  constructor(private accountService: AccountService) {}
+
+  ngOnInit() {
+    this.isLoggedIn$ = this.accountService.getIsLoggedIn();
+  }
 }

@@ -1,6 +1,8 @@
- *{ outline: 2.5px solid red;} 
+ * { outline: 2.5px solid red;} 
 
 body 
 {
     margin: 0px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
