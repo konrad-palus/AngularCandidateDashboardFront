@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '../models/login.model';
 import { RegisterModel } from '../models/register.model';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -7,6 +7,8 @@ import { LoginResponse } from '../models/login-response-model';
 import { RegisterResponse } from '../models/register-model-response';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
+import { Candidate } from '../DTO/CandidateInterfaces/Candidate-interface';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -42,5 +44,19 @@ export class AccountService {
     const token = localStorage.getItem('token');
     this.isLoggedIn.next(!!token);
     return this.isLoggedIn.asObservable();
+  }
+
+  getUserData(): Observable<Candidate> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No token found');
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Candidate>(`${this.apiUrl}/api/Account/GetUserData`, { headers: headers });
   }
 }

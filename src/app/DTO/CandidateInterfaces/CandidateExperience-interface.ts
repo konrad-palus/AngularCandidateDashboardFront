@@ -1,4 +1,4 @@
-export class CandidateExperience {
+export interface CandidateExperience {
     id: string;
     startDate: Date;
     endDate?: Date;
