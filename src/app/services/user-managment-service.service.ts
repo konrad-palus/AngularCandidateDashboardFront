@@ -57,6 +57,6 @@ export class AccountService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get<Candidate>(`${this.apiUrl}/api/Account/GetUserData`, { headers: headers });
+    return this.http.get<Candidate>(`${this.apiUrl}/Account/GetUserData`, { headers: headers });
   }
 }
