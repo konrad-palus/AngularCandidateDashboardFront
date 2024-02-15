@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { LoginResponse } from '../models/login-response-model';
 import { RegisterResponse } from '../models/register-model-response';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +14,7 @@ export class AccountService {
   private apiUrl = 'https://localhost:7228'; 
   private isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   registerUser(registrationData: RegisterModel): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/Account/Register`, registrationData);
@@ -34,6 +35,7 @@ export class AccountService {
   logoutUser(): void {
     localStorage.removeItem('token');
     this.isLoggedIn.next(false);
+    this.router.navigate(['']);
   }
 
   getIsLoggedIn(): Observable<boolean> {
