@@ -4,6 +4,7 @@ import { RegisterComponent } from '../../app/register/register.component';
 import { ForgotPasswordComponent } from '../../app/forgot-password/forgot-password.component';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-welcome',
   standalone: true,
