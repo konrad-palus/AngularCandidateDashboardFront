@@ -37,7 +37,7 @@
 
 .background 
 {
-    background-image: url('../../assets/welcomePageBacground.png');
+    background-image: url('../../../assets/welcomePageBacground.png');
     height: 100vh;
     width: 100%;
     background-size: cover;

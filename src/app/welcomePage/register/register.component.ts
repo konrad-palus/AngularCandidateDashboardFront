@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RegisterModel } from '../models/register.model';
+import { RegisterModel } from '../../models/register.model';
 import { FormsModule } from '@angular/forms';
-import { AccountService } from '../services/user-managment-service.service';
+import { AccountService } from '../../services/user-managment-service.service';
 
 @Component({
   selector: 'app-register',
