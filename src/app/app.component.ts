@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccountService } from './services/user-managment-service.service';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent], 
+  imports: [CommonModule, RouterOutlet, NavbarComponent, RouterLink], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -20,4 +20,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn$ = this.accountService.getIsLoggedIn();
   }
+  
 }
+

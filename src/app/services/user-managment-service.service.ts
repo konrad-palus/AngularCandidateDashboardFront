@@ -8,6 +8,7 @@ import { RegisterResponse } from '../models/register-model-response';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
 import { Candidate } from '../DTO/CandidateInterfaces/Candidate-interface';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -59,4 +60,19 @@ export class AccountService {
 
     return this.http.get<Candidate>(`${this.apiUrl}/Account/GetUserData`, { headers: headers });
   }
+
+
+  getUserRoleFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    try {
+      const decodedToken = jwtDecode(token) as any;
+      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] || null;
+    } catch (error) {
+      console.error('Error decoding token', error);
+      return null;
+    }
+  }
 }
+
