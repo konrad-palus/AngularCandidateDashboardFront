@@ -4,14 +4,17 @@
     justify-content: flex-start; 
     width: 100%; 
     gap: 4rem;
+    justify-content: center; 
   }
   
   .profile-photo {
-    width: 7vw; 
-    height: 7vw; 
+    width: 10vw; 
+    height: 10vw; 
     border-radius: 15%;
     background-color: #857d7db4; 
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     border: 1px solid violet;
+    background-size: cover;
+    background-position: center;
   }

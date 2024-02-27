@@ -22,10 +22,11 @@ export class UploadPhotoComponent {
       next: (data) => {
         if (data.photoUrl) {
           this.photoUrl = data.photoUrl;
+          this.ngOnInit();
         }
       },
       error: (error) => {
-        console.log('No photo URL returned or error fetching photo URL', error);
+        console.warn('No photo URL returned or error fetching photo URL', error);
       }
     });
   }

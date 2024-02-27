@@ -1,9 +1,9 @@
 <div class="profile-container">
-    <div class="profile-photo"></div>
-    <div class="upload-button-container">
+  <div class="profile-photo" [style.backgroundImage]="photoUrl ? 'url(' + photoUrl + ')' : 'none'"></div>
+  <div class="upload-button-container">
       <button mat-raised-button color="primary" (click)="fileInput.click()">
         Upload Photo
       </button>
       <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
-    </div>
   </div>
+</div>

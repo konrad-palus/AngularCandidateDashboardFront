@@ -82,7 +82,7 @@ export class AccountService {
 }
 
 getPhotoUrl(): Observable<{ photoUrl: string }> {
-  return this.http.get<{ photoUrl: string }>(`${this.apiUrl}/User/upload-photo`, {
+  return this.http.get<{ photoUrl: string }>(`${this.apiUrl}/User/get-photo`, {
   });
 }
 }
