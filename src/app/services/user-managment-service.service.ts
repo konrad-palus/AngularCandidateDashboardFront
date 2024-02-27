@@ -74,5 +74,16 @@ export class AccountService {
       return null;
     }
   }
+
+  postUserPhoto(photo: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    return this.http.post(`${this.apiUrl}/User/upload-photo`, formData);
+}
+
+getPhotoUrl(): Observable<{ photoUrl: string }> {
+  return this.http.get<{ photoUrl: string }>(`${this.apiUrl}/User/upload-photo`, {
+  });
+}
 }
 

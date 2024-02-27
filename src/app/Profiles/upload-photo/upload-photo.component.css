@@ -1,0 +1,17 @@
+.profile-container {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    width: 100%; 
+    gap: 4rem;
+  }
+  
+  .profile-photo {
+    width: 7vw; 
+    height: 7vw; 
+    border-radius: 15%;
+    background-color: #857d7db4; 
+    background-size: cover;
+    background-position: center;
+    border: 1px solid violet;
+  }
