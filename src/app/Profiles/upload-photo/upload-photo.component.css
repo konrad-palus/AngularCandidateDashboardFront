@@ -1,9 +1,10 @@
 .profile-container {
     display: flex;
+    flex-direction: column;
     align-items: center; 
     justify-content: flex-start; 
     width: 100%; 
-    gap: 4rem;
+    gap: .5rem;
     justify-content: center; 
   }
   
@@ -17,4 +18,9 @@
     border: 1px solid violet;
     background-size: cover;
     background-position: center;
+  }
+
+  button 
+  {
+    width: 10vw;
   }

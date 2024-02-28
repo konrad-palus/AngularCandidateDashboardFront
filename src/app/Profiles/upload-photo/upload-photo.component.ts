@@ -22,7 +22,6 @@ export class UploadPhotoComponent {
       next: (data) => {
         if (data.photoUrl) {
           this.photoUrl = data.photoUrl;
-          this.ngOnInit();
         }
       },
       error: (error) => {
@@ -36,7 +35,7 @@ export class UploadPhotoComponent {
     if (file) {
       this.accountService.postUserPhoto(file).subscribe({
         next: (response) => {
-          this.ngOnInit();
+          this.photoUrl = response.photoUrl;
           console.log('Photo uploaded successfully', response);
         },
         error: (error) => {
@@ -44,5 +43,4 @@ export class UploadPhotoComponent {
         }
       });
     }
-  }
-}
+  }}

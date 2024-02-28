@@ -1,0 +1,21 @@
+<div class="employer-details-container">
+  <h1 class="employer-header">Update Employer Details</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company Name</mat-label>
+    <input matInput [(ngModel)]="companyName" name="companyName">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="updateCompanyName()">
+    Update Company Name
+  </button>
+
+  <mat-form-field appearance="fill" class="mat-form-field-full-width">
+    <mat-label>Company Description</mat-label>
+    <textarea matInput [(ngModel)]="companyDescription" name="companyDescription" rows="5"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="updateCompanyDescription()">
+    Update Company Description
+  </button>
+</div>

@@ -9,6 +9,7 @@ import { map } from 'rxjs';
 import { Router } from '@angular/router';
 import { Candidate } from '../DTO/CandidateInterfaces/Candidate-interface';
 import { jwtDecode } from 'jwt-decode';
+import { EmployerDetalis } from '../DTO/EmployerInterfaces/employer-detalis';
 
 @Injectable({
   providedIn: 'root',
@@ -84,6 +85,24 @@ export class AccountService {
 getPhotoUrl(): Observable<{ photoUrl: string }> {
   return this.http.get<{ photoUrl: string }>(`${this.apiUrl}/User/get-photo`, {
   });
+}
+
+updateCompanyName(companyName: string): Observable<any> {
+  const payload: EmployerDetalis = { companyName };
+  return this.http.post(`${this.apiUrl}/Employer/UpdateCompanyName`, payload);
+}
+
+updateCompanyDescription(companyDescription: string): Observable<any> {
+  const payload: EmployerDetalis = { companyDescription };
+  return this.http.post(`${this.apiUrl}/Employer/UpdateCompanyDescription`, payload);
+}
+
+getCompanyName(): Observable<any> {
+  return this.http.get<{CompanyName: string}>(`${this.apiUrl}/Employer/GetCompanyName`);
+}
+
+getCompanyDescription(): Observable<any> {
+  return this.http.get<{CompanyDescription: string}>(`${this.apiUrl}/Employer/GetCompanyDescription`);
 }
 }
 
