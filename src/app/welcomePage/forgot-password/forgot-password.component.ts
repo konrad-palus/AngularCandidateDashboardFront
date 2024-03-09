@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ForgotPasswordModel } from '../../models/forgot-password.model';
+import { AccountService } from '../../services/user-managment-service.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,7 +16,16 @@ export class ForgotPasswordComponent {
     email: '',
   };
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
-  resendPaswordReset() {}
+  resendPaswordReset() {
+    this.accountService.forgotPassword(this.model).subscribe({
+      next: (response) => {
+        console.log('Registration successful', response);
+      },
+      error: (error) => {
+        console.error('Registration failed', error);
+      }
+    });
+  }
 }

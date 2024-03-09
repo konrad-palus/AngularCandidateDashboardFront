@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { Candidate } from '../DTO/CandidateInterfaces/Candidate-interface';
 import { jwtDecode } from 'jwt-decode';
 import { EmployerDetalis } from '../DTO/EmployerInterfaces/employer-detalis';
+import { IUserDetails } from '../DTO/SharedInterfaces/UserDetails-interface';
+import { ForgotPasswordModel } from '../models/forgot-password.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +38,10 @@ export class AccountService {
     );
   }
 
+  forgotPassword(forgotPassword: ForgotPasswordModel) 
+  {
+    return this.http.post<ForgotPasswordModel>(`${this.apiUrl}/Account/ForgotPassword`, forgotPassword);
+  }
   logoutUser(): void {
     localStorage.removeItem('token');
     this.isLoggedIn.next(false);
@@ -103,6 +109,19 @@ getCompanyName(): Observable<any> {
 
 getCompanyDescription(): Observable<any> {
   return this.http.get<{CompanyDescription: string}>(`${this.apiUrl}/Employer/GetCompanyDescription`);
+}
+
+generateAndUpdateCompanyDescription(): Observable<any> {
+  return this.http.get<{CompanyDescription: string}>(`${this.apiUrl}/Employer/GenerateAndUpdateCompanyDescription`);
+}
+
+updateUserData(userData: IUserDetails): Observable<any> {
+  return this.http.post(`${this.apiUrl}/User/UpdateUserDetails`, userData);
+}
+
+public ResetPassword(data: ResetPasswordRequestModel, email: string, token: string): Observable<any> {
+  const url = `${this.apiUrl}/User/ResetPassword?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+  return this.http.post(url, data);
 }
 }
 
