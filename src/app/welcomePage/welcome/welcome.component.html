@@ -1,15 +1,12 @@
-
-<section class="background" >
-<div class="welcomeWrap">
-    <div class="Options">
-        <button class="sign" (click)="showForm('sign')">Sign in</button>
-        <button class="register" (click)="showForm('register')">Register</button>
-        <button class="forgotPassword" (click)="showForm('forgot')">Forgot password</button>
-      </div>
-      <div class="formPage">
-        <app-sign-in *ngIf="currentForm === 'sign'"></app-sign-in>
-        <app-register *ngIf="currentForm === 'register'"></app-register>
-        <app-forgot-password *ngIf="currentForm === 'forgot'"></app-forgot-password>
-      </div>
-</div>
+<section class="background">
+  <div class="welcomeWrap">
+    <div class="options">
+      <a [routerLink]="['/welcome/sign-in']" class="sign">Sign in</a>
+      <a [routerLink]="['/welcome/register']" class="register">Register</a>
+      <a [routerLink]="['/welcome/forgot-password']" class="forgotPassword">Forgot password</a>
+    </div>
+    <div class="formPage">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </section>

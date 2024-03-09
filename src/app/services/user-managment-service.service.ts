@@ -12,7 +12,7 @@ import { jwtDecode } from 'jwt-decode';
 import { EmployerDetalis } from '../DTO/EmployerInterfaces/employer-detalis';
 import { IUserDetails } from '../DTO/SharedInterfaces/UserDetails-interface';
 import { ForgotPasswordModel } from '../models/forgot-password.model';
-
+import { ResetPasswordRequestModel } from '../models/reset-password.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -119,9 +119,10 @@ updateUserData(userData: IUserDetails): Observable<any> {
   return this.http.post(`${this.apiUrl}/User/UpdateUserDetails`, userData);
 }
 
-public ResetPassword(data: ResetPasswordRequestModel, email: string, token: string): Observable<any> {
-  const url = `${this.apiUrl}/User/ResetPassword?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+ resetPassword(data: ResetPasswordRequestModel, email: string, token: string): Observable<any> {
+  const url = `${this.apiUrl}/Account/ResetPassword?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
   return this.http.post(url, data);
 }
+
 }
 

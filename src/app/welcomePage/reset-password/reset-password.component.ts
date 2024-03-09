@@ -7,12 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatCardModule]
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatCardModule, CommonModule]
 })
 export class ResetPasswordComponent implements OnInit {
   resetPasswordForm!: FormGroup; 

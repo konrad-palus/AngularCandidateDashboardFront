@@ -9,7 +9,7 @@
     box-shadow: .4rem .1rem .8rem .4rem rgba(255, 255, 255, 0.8);
 }
 
-.Options {
+.options {
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -17,6 +17,14 @@
     height: 100%;
     justify-content: space-between;
 }
+
+.options a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; 
+    color: white;
+  }
 
 .sign, .register, .forgotPassword {
     width: 100%; 
