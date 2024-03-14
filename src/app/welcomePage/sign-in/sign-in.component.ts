@@ -36,7 +36,7 @@ export class SignInComponent implements OnInit {
   signIn() {
     this.accountService.loginUser(this.model).subscribe({
       next: (response) => {
-        const token = response.token;
+        const token = response.data;
         localStorage.setItem('token', token); 
         const role = this.accountService.getUserRoleFromToken();
     

@@ -12,7 +12,7 @@ import { AccountService } from '../../services/user-managment-service.service';
 })
 export class RegisterComponent {
   model: RegisterModel = {
-    login: '',
+    userName: '',
     registrationEmail: '',
     password: '',
     isCandidate: false,
