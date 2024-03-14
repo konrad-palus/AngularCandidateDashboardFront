@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '../models/login.model';
 import { RegisterModel } from '../models/register.model';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { LoginResponse } from '../models/login-response-model';
 import { RegisterResponse } from '../models/register-model-response';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
@@ -13,6 +12,7 @@ import { EmployerDetalis } from '../DTO/EmployerInterfaces/employer-detalis';
 import { IUserDetails } from '../DTO/SharedInterfaces/UserDetails-interface';
 import { ForgotPasswordModel } from '../models/forgot-password.model';
 import { ResetPasswordRequestModel } from '../models/reset-password.model';
+import { ApiResponse } from '../models/IApiResponse';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,17 +26,18 @@ export class AccountService {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/Account/Register`, registrationData);
   }
 
-  loginUser(loginData: LoginModel): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/Account/Login`, loginData).pipe(
+  loginUser(loginData: LoginModel): Observable<ApiResponse<string>> {
+    return this.http.post<ApiResponse<string>>(`${this.apiUrl}/Account/Login`, loginData).pipe(
       map(response => {
-        if (response.token) {
-          localStorage.setItem('token', response.token);
+        if (response.success && response.data) {
+          localStorage.setItem('token', response.data);
           this.isLoggedIn.next(true);
         }
         return response;
       })
     );
   }
+
 
   forgotPassword(forgotPassword: ForgotPasswordModel) 
   {
@@ -125,4 +126,6 @@ updateUserData(userData: IUserDetails): Observable<any> {
 }
 
 }
+
+
 

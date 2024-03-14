@@ -1,5 +1,5 @@
 export interface RegisterModel {
-  login: string;
+  userName: string;
   registrationEmail: string;
   password: string;
   isCandidate: boolean;
