@@ -21,10 +21,10 @@ export class ForgotPasswordComponent {
   resendPaswordReset() {
     this.accountService.forgotPassword(this.model).subscribe({
       next: (response) => {
-        console.log('Registration successful', response);
+        console.log('Link was sent', response);
       },
       error: (error) => {
-        console.error('Registration failed', error);
+        console.error('Error due sending link', error);
       }
     });
   }

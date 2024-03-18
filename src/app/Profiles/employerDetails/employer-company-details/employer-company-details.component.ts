@@ -38,6 +38,20 @@ export class EmployerCompanyDetailsComponent {
     });
   }
 
+  generateAndUpdateCompanyDescription(): void 
+  {
+    this.accountService.generateAndUpdateCompanyDescription().subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data.companyDescription)
+        {
+          this.companyDescription = data.companyDescription;
+        }
+       },
+       error: (error) => console.error(`Generating company description failed due ${error.data?.Message}`, error)
+      });
+  }
+
   loadCompanyName(): void {
     this.accountService.getCompanyName().subscribe({
       next: (data) => {

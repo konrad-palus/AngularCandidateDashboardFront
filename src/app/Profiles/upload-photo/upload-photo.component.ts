@@ -12,20 +12,19 @@ import { CommonModule } from '@angular/common';
 })
 
 export class UploadPhotoComponent {
-  imagePreview: string | ArrayBuffer | null = null;
-  photoUrl: string | null = null; 
+  photoUrl: string | null = null;
 
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.accountService.getPhotoUrl().subscribe({
-      next: (data) => {
-        if (data.photoUrl) {
-          this.photoUrl = data.photoUrl;
+      next: (response) => {
+        if (response.success) {
+          this.photoUrl = response.data;
         }
       },
       error: (error) => {
-        console.warn('No photo URL returned or error fetching photo URL', error);
+        console.error('Error fetching photo URL', error);
       }
     });
   }
@@ -33,14 +32,20 @@ export class UploadPhotoComponent {
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
+      const formData = new FormData();
+      formData.append('photo', file);
+
       this.accountService.postUserPhoto(file).subscribe({
         next: (response) => {
-          this.photoUrl = response.photoUrl;
-          console.log('Photo uploaded successfully', response);
+          if (response.success) {
+            this.photoUrl = response.data;
+            console.log('Photo uploaded successfully', response);
+          }
         },
         error: (error) => {
           console.error('Error uploading photo', error);
         }
       });
     }
-  }}
+  }
+}

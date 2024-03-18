@@ -4,7 +4,7 @@
     <input class = "inputField" type="email" [(ngModel)]="model.registrationEmail" name="registrationEmail" placeholder="Email" required>
     <input class = "inputField" type="password" [(ngModel)]="model.password" name="password" placeholder="Password" required>
     <label class="checkbox-label">
-        <input type="checkbox" class="checkboxRegForm" [(ngModel)]="model.isCandidate" name="isCandidate">
+        <input type="checkbox" class="checkboxRegForm" [(ngModel)]="model.isCandidate" disabled="true" value="false" name="isCandidate">
         <p>Are you a candidate?</p>
       </label>    <input class = "inputField" type="text" [(ngModel)]="model.name" name="name" placeholder="Name" required>
     <input class = "inputField" type="text" [(ngModel)]="model.lastName" name="lastName" placeholder="LastName" required>

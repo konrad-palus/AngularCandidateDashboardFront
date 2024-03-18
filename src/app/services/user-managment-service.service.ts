@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '../models/login.model';
 import { RegisterModel } from '../models/register.model';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, catchError, throwError } from 'rxjs';
 import { RegisterResponse } from '../models/register-model-response';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
@@ -83,15 +83,14 @@ export class AccountService {
     }
   }
 
-  postUserPhoto(photo: File): Observable<any> {
+  postUserPhoto(photo: File): Observable<ApiResponse<any>> {
     const formData = new FormData();
     formData.append('photo', photo);
-    return this.http.post(`${this.apiUrl}/User/upload-photo`, formData);
-}
+    return this.http.post<ApiResponse<any>>(`${this.apiUrl}/User/UploadPhoto`, formData);
+  }
 
-getPhotoUrl(): Observable<{ photoUrl: string }> {
-  return this.http.get<{ photoUrl: string }>(`${this.apiUrl}/User/get-photo`, {
-  });
+getPhotoUrl(): Observable<ApiResponse<any>> {
+  return this.http.get<ApiResponse<any>>(`${this.apiUrl}/User/GetPhoto`);
 }
 
 updateCompanyName(companyName: string): Observable<any> {
@@ -116,8 +115,13 @@ generateAndUpdateCompanyDescription(): Observable<any> {
   return this.http.get<{CompanyDescription: string}>(`${this.apiUrl}/Employer/GenerateAndUpdateCompanyDescription`);
 }
 
-updateUserData(userData: IUserDetails): Observable<any> {
-  return this.http.post(`${this.apiUrl}/User/UpdateUserDetails`, userData);
+updateUserData(userData: IUserDetails): Observable<ApiResponse<IUserDetails>> {
+  return this.http.post<ApiResponse<IUserDetails>>(`${this.apiUrl}/User/UpdateUserDetails`, userData).pipe(
+    catchError((error: HttpErrorResponse) => {
+      console.error('Error updating user details', error);
+      return throwError(() => new Error('Failed to update user details'));
+    })
+  );
 }
 
  resetPassword(data: ResetPasswordRequestModel, email: string, token: string): Observable<any> {

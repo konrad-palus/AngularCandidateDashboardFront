@@ -5,3 +5,12 @@
   justify-content: center; 
   height: 100%; 
 }
+
+.employer-first-line-wraper 
+{
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  justify-content: center;
+  padding: 2rem;
+}

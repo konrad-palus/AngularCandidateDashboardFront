@@ -18,7 +18,10 @@
     width: 100%; 
   }
 
-  .employer-header 
-  {
-    font-size: 3.2rem;
+  .light-green-button {
+    background-color: #7CB342;
+  }
+
+  .light-green-button:hover {
+    background-color: #93e930; 
   }
