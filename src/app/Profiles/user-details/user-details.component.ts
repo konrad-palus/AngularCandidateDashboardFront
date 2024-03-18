@@ -6,13 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { IUserDetails } from '../../DTO/SharedInterfaces/UserDetails-interface';
 import { AccountService } from '../../services/user-managment-service.service';
 @Component({
-  selector: 'app-upload-user-details',
+  selector: 'app-user-details',
   standalone: true,
   imports: [MatInputModule, MatButtonModule, FormsModule, MatIconModule],
-  templateUrl: './upload-user-details.component.html',
-  styleUrl: './upload-user-details.component.css'
+  templateUrl: './user-details.component.html',
+  styleUrl: './user-details.component.css'
 })
-export class UploadUserDetailsComponent {
+export class UserDetailsComponent {
   userDetails: IUserDetails = {
     name: undefined,
     lastName: undefined,
