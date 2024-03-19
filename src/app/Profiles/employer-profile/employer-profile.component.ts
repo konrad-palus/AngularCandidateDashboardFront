@@ -6,8 +6,7 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 @Component({
   selector: 'app-employer-profile',
   standalone: true,
-  imports: [
-    MatButtonModule,  UploadPhotoComponent, EmployerCompanyDetailsComponent, UserDetailsComponent], 
+  imports: [MatButtonModule,  UploadPhotoComponent, EmployerCompanyDetailsComponent, UserDetailsComponent], 
   templateUrl: './employer-profile.component.html',
   styleUrls: ['./employer-profile.component.css'] 
 })

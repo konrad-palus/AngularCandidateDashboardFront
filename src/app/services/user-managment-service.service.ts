@@ -55,20 +55,9 @@ export class AccountService {
     return this.isLoggedIn.asObservable();
   }
 
-  getUserData(): Observable<Candidate> {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('No token found');
-    }
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-
-    return this.http.get<Candidate>(`${this.apiUrl}/Account/GetUserData`, { headers: headers });
+  getUserData(): Observable<ApiResponse<IUserDetails>> {
+    return this.http.get<ApiResponse<IUserDetails>>(`${this.apiUrl}/User/GetUserData`);
   }
-
 
   getUserRoleFromToken(): string | null {
     const token = localStorage.getItem('token');
